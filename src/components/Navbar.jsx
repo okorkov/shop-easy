@@ -62,9 +62,21 @@ export default function SimpleTabs() {
     width: '100px',
     padding: '10px',
     margin: '0 6px 6px',
+    marginLeft: '5%',
     background: '#4854b4',
     textDecoration: 'none',
     color: 'white',
+  }
+
+  const cart = {
+    width: '100px',
+    padding: '10px',
+    margin: '0 6px 6px',
+    marginRight: '5%',
+    background: '#4854b4',
+    textDecoration: 'none',
+    color: 'white',
+    marginLeft: 'auto',
   }
 
   const allTabs = ['/', '/categories', '/login', '/checkout'];
@@ -81,7 +93,7 @@ export default function SimpleTabs() {
                   <Tab label="Browse"  value="/" component={Link} to={allTabs[0]} style={link}/>
                   <Tab label="Shop by Category"  value="/categories" component={Link} to={allTabs[1]} style={link}/>
                   <Tab label="Sign In"  value="/login" component={Link} to={allTabs[2]} style={link}/>
-                  <Tab label={<ShoppingCart />}  value="/checkout" component={Link} to={allTabs[3]} style={link}/>
+                  <Tab label={<ShoppingCart />}  value="/checkout" component={Link} to={allTabs[3]} style={cart}/>
                 </Tabs>
               </AppBar>
               <Switch>
