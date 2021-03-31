@@ -11,6 +11,7 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import Grid from '@material-ui/core/Grid';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -34,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 export default function ProductCard(props) {
   const classes = useStyles();
   return (
@@ -41,7 +43,7 @@ export default function ProductCard(props) {
       <Card className={classes.root}>
         <CardHeader
           title={props.data.name}
-          // {id: 4, name: "Google pixel 6", description: "Google Phone", price: "400.0", category_id: 1, …}
+          subheader={`Updated on: ${new Date(props.data.updated_at).toLocaleDateString("en-US")}`}
         />
          <img className="img-fluid product-image" src={props.data.image} alt={props.data.name}></img>
         <CardContent>
