@@ -23,32 +23,23 @@ const useStyles = makeStyles({
     marginBottom: 12,
   },
 });
+const capitalize = (s) => {
+  if (typeof s !== 'string') return ''
+  return s.charAt(0).toUpperCase() + s.slice(1)
+}
 
-export default function CategoryCard() {
+export default function CategoryCard(props) {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
-
   return (
     <Grid item>
       <Card className={classes.root}>
         <CardContent>
-          <Typography className={classes.title} color="textSecondary" gutterBottom>
-            Word of the Day
-          </Typography>
           <Typography variant="h5" component="h2">
-            be{bull}nev{bull}o{bull}lent
-          </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            adjective
-          </Typography>
-          <Typography variant="body2" component="p">
-            well meaning and kindly.
-            <br />
-            {'"a benevolent smile"'}
+            {capitalize(props.data.name)}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Learn More</Button>
+          <Button size="small">Browse Products</Button>
         </CardActions>
       </Card>
     </Grid>
