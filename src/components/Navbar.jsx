@@ -11,6 +11,7 @@ import ShoppingCart from './ShoppingCart';
 import ShoppingView from './ShoppingView';
 import Cart from './Cart';
 import Login from './Login';
+import Categories from './Categories';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 
@@ -66,7 +67,7 @@ export default function SimpleTabs() {
     color: 'white',
   }
 
-  const allTabs = ['/', '/login', '/checkout'];
+  const allTabs = ['/', '/categories', '/login', '/checkout'];
 
   return (
     <Router>
@@ -78,14 +79,16 @@ export default function SimpleTabs() {
               <AppBar position="static">
                 <Tabs value={location.pathname} onChange={handleChange} aria-label="simple tabs example">
                   <Tab label="Browse"  value="/" component={Link} to={allTabs[0]} style={link}/>
-                  <Tab label="Sign In"  value="/login" component={Link} to={allTabs[1]} style={link}/>
-                  <Tab label={<ShoppingCart />}  value="/checkout" component={Link} to={allTabs[2]} style={link}/>
+                  <Tab label="Shop by Category"  value="/categories" component={Link} to={allTabs[1]} style={link}/>
+                  <Tab label="Sign In"  value="/login" component={Link} to={allTabs[2]} style={link}/>
+                  <Tab label={<ShoppingCart />}  value="/checkout" component={Link} to={allTabs[3]} style={link}/>
                 </Tabs>
               </AppBar>
               <Switch>
-                <Route path={allTabs[1]} component={ShoppingView} />
+                <Route path={allTabs[0]} exact component={ShoppingView} />
+                <Route path={allTabs[1]} component={Categories} />
                 <Route path={allTabs[2]} component={Login} />
-                <Route path={allTabs[0]} component={Cart} />
+                <Route path={allTabs[3]} component={Cart} />
               </Switch>
             </Fragment>
           )}
