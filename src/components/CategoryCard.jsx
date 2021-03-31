@@ -25,11 +25,18 @@ const useStyles = makeStyles({
 });
 const capitalize = (s) => {
   if (typeof s !== 'string') return ''
-  return s.charAt(0).toUpperCase() + s.slice(1)
+  return s.charAt(0).toUpperCase() + s.slice(1);
 }
+
+
 
 export default function CategoryCard(props) {
   const classes = useStyles();
+
+  const handleClick = () => {
+    console.log(props.data)
+  }
+
   return (
     <Grid item>
       <Card className={classes.root}>
@@ -39,7 +46,7 @@ export default function CategoryCard(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small">Browse Products</Button>
+          <Button size="large" onClick={() => handleClick()}>Browse Products</Button>
         </CardActions>
       </Card>
     </Grid>

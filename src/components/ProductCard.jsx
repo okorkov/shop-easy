@@ -15,6 +15,9 @@ import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
+    minWidth: 340,
+    maxHeight: 500,
+    minHeight: 480
   },
   media: {
     height: 0,
@@ -35,20 +38,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const desctiptionHandler = (description) => {
+  let result = `${description.slice(0,40)}...`
+  return result
+}
+
+
 
 export default function ProductCard(props) {
   const classes = useStyles();
+
+  const handleClick = (e) => {
+    props.renderFunction(props.data.id)
+  }
+  
   return (
     <Grid item>
-      <Card className={classes.root}>
-        <CardHeader
+      <Card className={classes.root} >
+        <CardHeader onClick={e => handleClick(e)}
           title={props.data.name}
           subheader={`Updated on: ${new Date(props.data.updated_at).toLocaleDateString("en-US")}`}
         />
-         <img className="img-fluid product-image" src={props.data.image} alt={props.data.name}></img>
+         <img className="img-fluid product-image" src={props.data.image} alt={props.data.name} onClick={e => handleClick(e)}></img>
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
-            {props.data.description}
+            {desctiptionHandler(props.data.description)}
           </Typography>
           {(props.data.quantity < 5 && props.data.quantity > 0) ? 
           <Typography variant="body2" className='quantity-warning'>
@@ -60,7 +74,6 @@ export default function ProductCard(props) {
           <IconButton aria-label="add to cart">
             <AddShoppingCartIcon fontSize="large" />
           </IconButton>
-          
           <h5 className="price-tag"><AttachMoneyIcon  />{props.data.price}</h5>
         </CardActions>}
       </Card>

@@ -79,8 +79,6 @@ export default function SimpleTabs() {
     marginLeft: 'auto',
   }
 
-  const allTabs = ['/', '/categories', '/login', '/checkout'];
-
   return (
     <Router>
       <div className={classes.root}>
@@ -90,17 +88,17 @@ export default function SimpleTabs() {
             <Fragment>
               <AppBar position="static">
                 <Tabs value={location.pathname} onChange={handleChange} aria-label="simple tabs example">
-                  <Tab label="Browse"  value="/" component={Link} to={allTabs[0]} style={link}/>
-                  <Tab label="Shop by Category"  value="/categories" component={Link} to={allTabs[1]} style={link}/>
-                  <Tab label="Sign In"  value="/login" component={Link} to={allTabs[2]} style={link}/>
-                  <Tab label={<ShoppingCart />}  value="/checkout" component={Link} to={allTabs[3]} style={cart}/>
+                  <Tab label="Browse"  value="/" component={Link} to={'/'} style={link}/>
+                  <Tab label="Shop by Category"  value="/categories" component={Link} to={'/categories'} style={link}/>
+                  <Tab label="Sign In"  value="/login" component={Link} to={'/login'} style={link}/>
+                  <Tab label={<ShoppingCart />}  value="/checkout" component={Link} to={'/checkout'} style={cart}/>
                 </Tabs>
               </AppBar>
               <Switch>
-                <Route path={allTabs[0]} exact component={ShoppingView} />
-                <Route path={allTabs[1]} component={Categories} />
-                <Route path={allTabs[2]} component={Login} />
-                <Route path={allTabs[3]} component={Cart} />
+                <Route path={'/'} exact component={ShoppingView} />
+                <Route path={'/categories'} component={Categories} />
+                <Route path={'/login'} component={Login} />
+                <Route path={'/checkout'} component={Cart} />
               </Switch>
             </Fragment>
           )}

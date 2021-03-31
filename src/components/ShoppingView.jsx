@@ -15,13 +15,17 @@ class ShoppingView extends Component {
   }
 
   renderProducts () {
-    return this.state.productData.map(product => <ProductCard key={product.id} data={product}/>)
+    return this.state.productData.map(product => <ProductCard key={product.id} data={product} renderFunction={this.renderProduct}/>)
+  }
+
+  renderProduct (param) {
+    console.log(param)
   }
 
   render() {
     return (
       <div className="shopping-view">
-        <Grid container spacing={8} justify="center" alignItems="center" style={{paddingTop: '5%'}}>
+        <Grid container spacing={8} justify="center" alignItems="stretch" style={{paddingTop: '5%'}}>
           {(this.state.dataLoaded) ? this.renderProducts() : <CircularProgress />}
         </Grid>
       </div>
