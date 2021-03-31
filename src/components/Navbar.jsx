@@ -1,5 +1,4 @@
 import React from 'react';
-import { Fragment } from "react";
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -8,7 +7,6 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import ShoppingCart from './ShoppingCart';
-import { NavLink } from 'react-router-dom';
 import ShoppingView from './ShoppingView';
 import Cart from './Cart';
 import Login from './Login';
@@ -41,13 +39,6 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -66,9 +57,9 @@ export default function SimpleTabs() {
 
   const link = {
     width: '100px',
-    padding: '12px',
+    padding: '10px',
     margin: '0 6px 6px',
-    background: 'blue',
+    background: '#4854b4',
     textDecoration: 'none',
     color: 'white',
   }
@@ -77,25 +68,18 @@ export default function SimpleTabs() {
   return (
     <Router>
       <div className={classes.root}>
-        <Route
-          path="/"
-          render={({ location }) => (
-            <Fragment>
-              <AppBar position="static">
-                <Tabs value={location.pathname} onChange={handleChange} aria-label="simple tabs example">
-                  <Tab label="Browse" {...a11yProps(0)} value="/" component={Link} to={allTabs[0]} />
-                  <Tab label="Sign In" {...a11yProps(1)} value="/login" component={Link} to={allTabs[1]} />
-                  <Tab label={<ShoppingCart />} {...a11yProps(2)} value="/checkout" component={Link} to={allTabs[2]}/>
-                </Tabs>
-              </AppBar>
-              <Switch>
-                <Route path={allTabs[1]} component={ShoppingView} />
-                <Route path={allTabs[2]} component={Login} />
-                <Route path={allTabs[0]} component={Cart} />
-              </Switch>
-            </Fragment>
-          )}
-        />
+        <AppBar position="static">
+          <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
+            <Tab label="Browse"  value="/" component={Link} to={allTabs[0]} style={link}/>
+            <Tab label="Sign In"  value="/login" component={Link} to={allTabs[1]} style={link}/>
+            <Tab label={<ShoppingCart />}  value="/checkout" component={Link} to={allTabs[2]} style={link}/>
+          </Tabs>
+        </AppBar>
+        <Switch>
+          <Route path={allTabs[1]} component={ShoppingView} />
+          <Route path={allTabs[2]} component={Login} />
+          <Route path={allTabs[0]} component={Cart} />
+        </Switch>
       </div>
     </Router>
   );
