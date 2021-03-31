@@ -9,3 +9,31 @@ body {
   height: auto;
   background: #c8dbff;
 }
+
+footer {
+  padding-top: 5%;
+}
+
+.product-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  height: auto;
+}
+
+.quantity-warning {
+  color: red;
+  font-size: 12px;
+}
+
+.quantity-zero {
+  color: black;
+  font-size: 16px;
+  text-align: center;
+}
+
+.price-tag {
+  margin-left: auto;
+  padding-right: 10%;
+}

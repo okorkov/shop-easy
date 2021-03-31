@@ -14,13 +14,17 @@ class ShoppingView extends Component {
     fetch('http://127.0.0.1:3000/api/products').then(promise => promise.json()).then(data => this.setState({ dataLoaded: true, productData: data}))
   }
 
+  renderProducts () {
+    return this.state.productData.map(product => <ProductCard key={product.id} data={product}/>)
+  }
+
   render() {
     return (
       <div className="shopping-view">
-        <Grid container spacing={10} justify="center" alignItems="center" style={{paddingTop: '5%'}}>
-          <Grid item xs={12} sm={3}>
-          {(this.state.dataLoaded) ? <ProductCard /> : <CircularProgress />}
-          </Grid>
+        <Grid container spacing={8} justify="center" alignItems="center" style={{paddingTop: '5%'}}>
+          
+          {(this.state.dataLoaded) ? this.renderProducts() : <CircularProgress />}
+        
         </Grid>
       </div>
     );
