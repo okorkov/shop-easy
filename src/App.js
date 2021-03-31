@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import ShoppingView from './components/ShoppingView';
-import Cart from './components/Cart';
-import Login from './components/Login'
+import { BrowserRouter as Router} from "react-router-dom";
 
 export default class App extends Component {
   render() {
