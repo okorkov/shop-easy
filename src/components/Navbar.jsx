@@ -13,7 +13,8 @@ import Cart from './Cart';
 import Login from './Login';
 import Categories from './Categories';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import SingleProduct from './SingleProduct';
+import SingleProduct from './SingleProduct'
+
 
 
 function TabPanel(props) {
@@ -100,7 +101,7 @@ export default function SimpleTabs() {
                 <Route path={'/categories'} component={Categories} />
                 <Route path={'/login'} component={Login} />
                 <Route path={'/checkout'} component={Cart} />
-                <Route path={'/products/:id'} exact component={SingleProduct} />
+                <Route path={'/products/:id'} component={SingleProduct} />
               </Switch>
             </Fragment>
           )}

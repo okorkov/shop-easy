@@ -48,18 +48,14 @@ const desctiptionHandler = (description) => {
 export default function ProductCard(props) {
   const classes = useStyles();
 
-  const handleClick = (e) => {
-    props.renderFunction(props.data.id)
-  }
-  
   return (
     <Grid item>
       <Card className={classes.root} >
-        <CardHeader onClick={e => handleClick(e)}
+        <CardHeader 
           title={props.data.name}
           subheader={`Updated on: ${new Date(props.data.updated_at).toLocaleDateString("en-US")}`}
         />
-         <img className="img-fluid product-image" src={props.data.image} alt={props.data.name} onClick={e => handleClick(e)}></img>
+         <img className="img-fluid product-image" src={props.data.image} alt={props.data.name} ></img>
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p">
             {desctiptionHandler(props.data.description)}
