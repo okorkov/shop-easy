@@ -4,6 +4,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import ProductCard from './ProductCard';
 import SingleProduct from './SingleProduct';
 
+
 class ShoppingView extends Component {
 
   constructor(props) {
@@ -26,22 +27,22 @@ class ShoppingView extends Component {
   }
 
   renderProduct (id) {
-    this.setState({
+    fetch(`http://127.0.0.1:3000/api/products/${id}`).then(promise => promise.json()).then(productData => this.setState({
       ...this.state,
-      productId: id 
-    })
+      productId: productData 
+    }))
   }
 
   render() {
     return (
-      <div className="shopping-view">
-        {(this.state.productId) ? 
-          <SingleProduct /> :
-          <Grid container spacing={8} justify="center" alignItems="stretch" style={{paddingTop: '5%'}}>
-          {(this.state.dataLoaded) ? this.renderProducts() : <CircularProgress />}
-         </Grid> 
-        }
-      </div>
+        <div className="shopping-view">
+          {(this.state.productId) ? 
+            <SingleProduct data={this.state.productId} /> :
+            <Grid container spacing={8} justify="center" alignItems="stretch" style={{paddingTop: '5%'}}>
+            {(this.state.dataLoaded) ? this.renderProducts() : <CircularProgress />}
+          </Grid> 
+          }
+        </div>
     );
   }
 }
