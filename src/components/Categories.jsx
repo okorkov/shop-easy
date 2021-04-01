@@ -17,7 +17,6 @@ export default class Categories extends Component {
   }
 
   renderCategories() {
-    
     return this.state.categories.map(category => <CategoryCard key={category.id} data={category}/>)
   }
 

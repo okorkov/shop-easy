@@ -13,7 +13,7 @@ import Cart from './Cart';
 import Login from './Login';
 import Categories from './Categories';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import SingleProduct from './SingleProduct'
+import SingleProduct from './SingleProduct';
 
 
 

@@ -23,7 +23,6 @@ class SingleProduct extends Component {
   }
 
   render() {
-
     return (
       <>
       {
