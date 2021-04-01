@@ -10,6 +10,8 @@ import { red } from '@material-ui/core/colors';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import Grid from '@material-ui/core/Grid';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import { BrowserRouter as Switch, Route, Link } from "react-router-dom";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,13 +51,12 @@ export default function ProductCard(props) {
   return (
     <Grid item>
       <Card className={classes.root} >
-        <CardHeader onClick={() => props.handleClick(props.data.id)}
-          title={props.data.name}
-          subheader={`Updated on: ${new Date(props.data.updated_at).toLocaleDateString("en-US")}`}
-        />
-         <img className="img-fluid product-image" src={props.data.image} alt={props.data.name} onClick={() => props.handleClick(props.data.id)}></img>
+        <Link to={"/products/" + props.data.id}>
+          <CardHeader title={props.data.name}/>
+          <img className="img-fluid product-image" src={props.data.image} alt={props.data.name} ></img>
+         </Link>
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p" onClick={() => props.handleClick(props.data.id)}> 
+          <Typography variant="body2" color="textSecondary" component="p" > 
             {desctiptionHandler(props.data.description)}
           </Typography>
           {(props.data.quantity < 5 && props.data.quantity > 0) ? 
@@ -66,7 +67,7 @@ export default function ProductCard(props) {
         {(props.data.quantity === 0) ? <p className='quantity-zero'>Out of Stock</p> :
         <CardActions disableSpacing>
           <IconButton aria-label="add to cart">
-            <AddShoppingCartIcon fontSize="large" onClick={() => console.log('shopping card clicked')}/>
+            <AddShoppingCartIcon fontSize="large" />
           </IconButton>
           <h5 className="price-tag"><AttachMoneyIcon  />{props.data.price}</h5>
         </CardActions>}
@@ -74,3 +75,4 @@ export default function ProductCard(props) {
     </Grid>
   );
 }
+

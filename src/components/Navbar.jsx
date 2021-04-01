@@ -94,6 +94,7 @@ export default function SimpleTabs() {
                   <Tab label="Shop by Category"  value="/categories" component={Link} to={'/categories'} style={link}/>
                   <Tab label="Sign In"  value="/login" component={Link} to={'/login'} style={link}/>
                   <Tab label={<ShoppingCart />}  value="/checkout" component={Link} to={'/checkout'} style={cart}/>
+                  <Tab  value="/products" style={{display: 'none'}}/>
                 </Tabs>
               </AppBar>
               <Switch>
