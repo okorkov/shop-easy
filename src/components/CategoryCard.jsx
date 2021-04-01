@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import { BrowserRouter as Switch, Route, Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -32,12 +33,8 @@ const capitalize = (s) => {
 
 export default function CategoryCard(props) {
   const classes = useStyles();
-
-  const handleClick = () => {
-    console.log(data)
-  }
-
   const data = props.category ||  props.data 
+  
   return (
     <Grid item>
       <Card className={classes.root}>
@@ -47,7 +44,9 @@ export default function CategoryCard(props) {
           </Typography>
         </CardContent>
         <CardActions style={{justifyContent: 'center'}}>
-          <Button size="large" onClick={() => handleClick()} style={{border: '1px solid blue'}}>Browse Products</Button>
+        <Link to={"/categories/" + data.id}>
+          <Button size="large"style={{border: '1px solid blue'}}>Browse Products</Button>
+        </ Link>
         </CardActions>
       </Card>
     </Grid>
