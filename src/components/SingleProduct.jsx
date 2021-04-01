@@ -30,9 +30,10 @@ class SingleProduct extends Component {
     return (
       <>
       {
-        (this.state.data === []) ?
+        (this.state.data === {}) ?
         <CircularProgress /> :
         <Card >
+          <div className="category" style={{justifyContent: 'center', textAlign: 'center'}}>
           <CardHeader 
             title={this.state.data.name}
             subheader={`Updated on: ${new Date(this.state.data.updated_at).toLocaleDateString("en-US")}`}
@@ -47,17 +48,17 @@ class SingleProduct extends Component {
             Only {this.state.data.quantity} left in stock!
           </Typography> : null}
           </CardContent>
-          <br /> <br /> <br />
-          <div className="category" style={{justifyContent: 'center', textAlign: 'center'}}>
-            <CategoryCard data={this.state.data} category={this.state.data.category}/>
-          </div>
-          {(this.state.data.quantity === 0) ? <p className='quantity-zero'>Out of Stock</p> :
+          <br /> <br /> 
+          <h4><strong>More in this category:</strong></h4>
+          <CategoryCard data={this.state.data} category={this.state.data.category}/>
+          {(this.state.data.quantity === 0) ? <><br /> <p className='quantity-zero' style={{color: 'red'}}>Sorry, Item is Out of Stock</p> </>:
           <CardActions disableSpacing>
             <IconButton aria-label="add to cart">
               <AddShoppingCartIcon fontSize="large"/>
             </IconButton>
             <h5 className="price-tag"><AttachMoneyIcon  />{this.state.data.price}</h5>
           </CardActions>}
+          </div>
         </Card>
       }
       </>
