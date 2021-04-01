@@ -34,19 +34,20 @@ export default function CategoryCard(props) {
   const classes = useStyles();
 
   const handleClick = () => {
-    console.log(props.data)
+    console.log(data)
   }
 
+  const data = props.category ||  props.data 
   return (
     <Grid item>
       <Card className={classes.root}>
         <CardContent>
-          <Typography variant="h5" component="h2">
-            {capitalize(props.data.name)}
+          <Typography variant="h5" component="h2" style={{textAlign: 'center', fontWeight: 'bold'}}> 
+            {capitalize(data.name)}
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button size="large" onClick={() => handleClick()}>Browse Products</Button>
+        <CardActions style={{justifyContent: 'center'}}>
+          <Button size="large" onClick={() => handleClick()} style={{border: '1px solid blue'}}>Browse Products</Button>
         </CardActions>
       </Card>
     </Grid>

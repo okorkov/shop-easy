@@ -8,8 +8,10 @@ import Typography from '@material-ui/core/Typography';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import ShareIcon from '@material-ui/icons/Share';
-import { ShareButton } from "react-custom-share";
+import CategoryCard from './CategoryCard'
+
+
+
 class SingleProduct extends Component {
 
   state = {
@@ -37,7 +39,7 @@ class SingleProduct extends Component {
           />
           <img className="img-fluid product-image" src={this.state.data.image} alt={this.state.data.name} ></img>
           <CardContent>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant="body1" color="textSecondary" component="p" style={{width: '40%', textAlign: 'center', marginLeft: '30%'}}>
               {this.state.data.description}
             </Typography>
             {(this.state.data.quantity < 5 && this.state.data.quantity > 0) ? 
@@ -45,14 +47,15 @@ class SingleProduct extends Component {
             Only {this.state.data.quantity} left in stock!
           </Typography> : null}
           </CardContent>
+          <br /> <br /> <br />
+          <div className="category" style={{justifyContent: 'center', textAlign: 'center'}}>
+            <CategoryCard data={this.state.data} category={this.state.data.category}/>
+          </div>
           {(this.state.data.quantity === 0) ? <p className='quantity-zero'>Out of Stock</p> :
           <CardActions disableSpacing>
             <IconButton aria-label="add to cart">
-              <AddShoppingCartIcon fontSize="large" />
+              <AddShoppingCartIcon fontSize="large"/>
             </IconButton>
-            <ShareButton aria-label="share">
-              <ShareIcon fontSize="large"/>
-            </ShareButton>
             <h5 className="price-tag"><AttachMoneyIcon  />{this.state.data.price}</h5>
           </CardActions>}
         </Card>
