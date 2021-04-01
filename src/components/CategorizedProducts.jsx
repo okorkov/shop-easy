@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ProductCard from './ProductCard';
 
+
 export default class CategorizedProducts extends Component {
   state ={
     dataLoaded: false,
@@ -19,14 +20,17 @@ export default class CategorizedProducts extends Component {
   }
 
   renderProducts () {
-    return this.state.productData.map(product => <ProductCard key={product.id} data={product} />)
+    if (this.state.productData !== []) {
+      return this.state.productData.map(product => <ProductCard key={product.id} data={product} />)
+    }
   }
 
   render() {
     return (
         <div className="shopping-view">
             <Grid container spacing={8} justify="center" alignItems="stretch" style={{paddingTop: '5%'}}>
-            {(this.state.dataLoaded) ? this.renderProducts () : <CircularProgress />}
+            {(this.state.dataLoaded) ? this.renderProducts() : <CircularProgress />}
+            <h1 style={{paddingTop: '5%', paddingBottom: '30%'}}>No Product in This Category</h1>
           </Grid> 
         </div>
     );
