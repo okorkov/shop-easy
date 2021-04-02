@@ -4,14 +4,14 @@ import Dialog from '@material-ui/core/Dialog';
 import LoginForm from './LoginForm'
 
 
-
 export default function Login() {
   const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (e) => {
     setOpen(true);
   };
-  const handleClose = () => {
+  const handleClose = (e) => {
+    e.preventDefault();
     setOpen(false);
   };
 
