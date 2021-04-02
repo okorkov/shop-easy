@@ -11,7 +11,6 @@ export default function Login() {
     setOpen(true);
   };
   const handleClose = (e) => {
-    e.preventDefault();
     setOpen(false);
   };
 
