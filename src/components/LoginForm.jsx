@@ -31,7 +31,7 @@ const LoginForm = (props) => {
     <TextField id="standard-basic" label="email" name="email"/>
     <TextField id="standard-basic" label="your name" name="name"/>
     <TextField id="standard-basic" label="password" type="password" name="password"/>
-    <TextField id="standard-basic" label="confirm password" type="password " name="password_confirmation"/>
+    <TextField id="standard-basic" label="confirm password" type="password" name="password_confirmation"/>
     <Button autoFocus onClick={() => props.handleClose()} color="primary">
       Sign Up
     </Button>

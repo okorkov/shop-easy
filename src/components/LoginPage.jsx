@@ -16,8 +16,8 @@ export default function Login() {
   };
 
   return (
-    <div style={{justifyContent: 'center', textAlign: 'center', paddingTop:'20%', paddingBottom:'20%'}}>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+    <div style={{justifyContent: 'center', textAlign: 'center', paddingTop:'5%', paddingBottom:'33%'}}>
+      <Button variant="outlined" color="primary" onClick={handleClickOpen} size="large">
         Log In / Sign Up
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
