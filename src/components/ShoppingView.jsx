@@ -24,7 +24,7 @@ class ShoppingView extends Component {
     return (
         <div className="shopping-view">
             <Grid container spacing={8} justify="center" alignItems="stretch" style={{paddingTop: '5%'}}>
-            {(this.state.dataLoaded) ? this.renderProducts() : <CircularProgress />}
+            {(this.state.dataLoaded) ? this.renderProducts() : <div style={{padding: '30%'}}><CircularProgress /></div>}
           </Grid> 
         </div>
     );

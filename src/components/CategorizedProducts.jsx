@@ -29,8 +29,8 @@ export default class CategorizedProducts extends Component {
     return (
         <div className="shopping-view">
             <Grid container spacing={8} justify="center" alignItems="stretch" style={{paddingTop: '5%'}}>
-            {(this.state.dataLoaded) ? this.renderProducts() : <CircularProgress />}
-            <h1 style={{paddingTop: '5%', paddingBottom: '30%'}}>No Product in This Category</h1>
+            {(this.state.dataLoaded) ? this.renderProducts() : <div style={{padding: '30%'}}><CircularProgress /></div>}
+            {(this.state.productData.length === 0) ? <h1 style={{paddingTop: '5%', paddingBottom: '30%'}}>No Product in This Category</h1> : null}
           </Grid> 
         </div>
     );

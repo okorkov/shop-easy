@@ -31,7 +31,7 @@ class SingleProduct extends Component {
       <>
       {
         (this.state.data === {}) ?
-        <CircularProgress /> :
+        <div style={{padding: '30%'}}><CircularProgress /></div> :
         <Card >
           <div className="category" style={{justifyContent: 'center', textAlign: 'center'}}>
           <CardHeader 

@@ -10,7 +10,7 @@ import Box from '@material-ui/core/Box';
 import ShoppingCart from './ShoppingCart';
 import ShoppingView from './ShoppingView';
 import Cart from './Cart';
-import Login from './Login';
+import Login from './LoginPage';
 import Categories from './Categories';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import SingleProduct from './SingleProduct';
