@@ -13,7 +13,7 @@ export default class Categories extends Component {
   }
 
   componentDidMount() {
-    fetch('http://127.0.0.1:3000/api/categories').then(promise => promise.json()).then(data => this.setState({ dataLoaded: true, categories: data}))
+    fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/categories`).then(promise => promise.json()).then(data => this.setState({ dataLoaded: true, categories: data}))
   }
 
   renderCategories() {

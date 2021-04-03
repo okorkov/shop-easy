@@ -23,7 +23,7 @@ class SingleProduct extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://127.0.0.1:3000/api/products/${this.productId()}`).then(promise => promise.json()).then(product => this.setState({data: product}))
+    fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/products/${this.productId()}`).then(promise => promise.json()).then(product => this.setState({data: product}))
   }
 
   render() {

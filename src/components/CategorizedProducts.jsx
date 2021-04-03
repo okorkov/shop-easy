@@ -12,7 +12,7 @@ export default class CategorizedProducts extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://127.0.0.1:3000/api/categories/${this.state.categoryId}`).then(promise => promise.json()).then(data => this.setState({ dataLoaded: true, productData: data.products}))
+    fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/categories/${this.state.categoryId}`).then(promise => promise.json()).then(data => this.setState({ dataLoaded: true, productData: data.products}))
   }
 
   productId() { 

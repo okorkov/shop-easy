@@ -12,7 +12,7 @@ class ShoppingView extends Component {
   }
 
   componentDidMount() {
-    fetch('http://127.0.0.1:3000/api/products').then(promise => promise.json()).then(data => this.setState({ dataLoaded: true, productData: data}))
+    fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/products`).then(promise => promise.json()).then(data => this.setState({ dataLoaded: true, productData: data}))
   }
 
 
