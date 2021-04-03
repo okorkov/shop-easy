@@ -2,6 +2,9 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import axios from 'axios';
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,21 +27,15 @@ const LoginForm = (props) => {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     props.handleClose(e)
-    fetch(`${BASE_URL}/users/user_auth`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(login)
-    }).then(promise => promise.json()).then(response => console.log(response)).catch(error => console.log(error.message))
-    
+    axios.post(`${BASE_URL}/sessions`, login, {withCredentials: true})
+    .then(response => console.log(response)).catch(error => console.log(error.message))
   }
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     props.handleClose(e)
-    console.log(signup)
+    axios.post(`${BASE_URL}/users`, signup, {withCredentials: true})
+    .then(response => console.log(response)).catch(error => console.log(error.message))
   }
 
   const handleLoginInput = (e) => {
@@ -61,7 +58,7 @@ const LoginForm = (props) => {
     <form className={classes.root} noValidate autoComplete="off" onSubmit={(e) => handleLoginSubmit(e)}>
     <TextField required={true} id="email" value={login.email} label="email" name="email"  onChange={(e) => handleLoginInput(e)}/>
     <TextField required={true} id="password" value={login.password} label="password" name="password" type="password" onChange={(e) => handleLoginInput(e)}/>
-    <Button autoFocus  color="primary" type="submit">
+    <Button autoFocus  color="primary" type="submit" disabled={login.email.length === 0 || login.password.length === 0}>
       Log In
     </Button>
   </form>
@@ -71,7 +68,7 @@ const LoginForm = (props) => {
     <TextField id="name-register" value={signup.name} label="your name" name="name" onChange={(e) => handleSignupInput(e)}/>
     <TextField id="password-register" value={signup.password} label="password" type="password" name="password" onChange={(e) => handleSignupInput(e)}/>
     <TextField id="password-confirm-register" value={signup.password_confirmation} label="confirm password" type="password" name="password_confirmation" onChange={(e) => handleSignupInput(e)}/>
-    <Button autoFocus  color="primary" type="submit">
+    <Button autoFocus  color="primary" type="submit" disabled={signup.email.length === 0 || signup.password.length === 0 || signup.password_confirmation.length === 0 || signup.name.length === 0}>
       Sign Up
     </Button>
   </form>
