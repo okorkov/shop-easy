@@ -19,10 +19,10 @@ const useStyles = makeStyles((theme) => ({
 const LoginForm = (props) => {
   const classes = useStyles();
 
-  const BASE_URL = process.env.REACT_APP_BACKEND_BASE_URL
-
   const [login, setLogin] = React.useState({email: '', password: ''});
   const [signup, setSignup] = React.useState({email: '', password: '', password_confirmation: '', name: ''});
+
+  const BASE_URL = process.env.REACT_APP_BACKEND_BASE_URL
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
