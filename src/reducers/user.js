@@ -17,6 +17,7 @@ export default (state = defaultState, action) => {
       } else {
         return state;
       }
+
     case 'SIGN_IN':
         return {
           ...state,
@@ -25,6 +26,13 @@ export default (state = defaultState, action) => {
         };
     case 'SIGN_UP':
       return;
+
+    case 'LOG_OUT':
+      return {
+        ...state,
+        logged_in: false,
+        user: {}
+      }
 
     default:
       return state;
