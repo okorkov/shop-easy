@@ -10,6 +10,21 @@ body {
   background: #c8dbff;
 }
 
+*{
+  animation: fadeInAnimation ease 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+   }
+}
+
 footer {
   padding-top: 5%;
 }
@@ -38,4 +53,8 @@ footer {
 .price-tag {
   margin-left: auto;
   padding-right: 10%;
+}
+
+.shopping-view {
+  min-height: 40rem;
 }
