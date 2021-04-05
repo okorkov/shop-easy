@@ -89,9 +89,10 @@ function SimpleTabs(props) {
   const [logged_in, setLogged_in] = React.useState(false);
 
   const handleLogOut = () => {
-    axios.delete(`${process.env.REACT_APP_BACKEND_BASE_URL}/sessions/${props.user.user.id}`, {withCredentials: true})
-    .then(props.dispatch(logOut()))
+      axios.delete(`${process.env.REACT_APP_BACKEND_BASE_URL}/sessions/${props.user.user.id}`, {withCredentials: true})
+      .then(props.dispatch(logOut()))
   }
+
 
   return (
     <Router>
@@ -104,7 +105,7 @@ function SimpleTabs(props) {
                 <Tabs value={location.pathname} onChange={handleChange} aria-label="simple tabs example">
                   <Tab label="Browse"  value="/" component={Link} to={'/'} style={link}/>
                   <Tab label="Shop by Category"  value="/categories" component={Link} to={'/categories'} style={link}/>
-                  {(props.user.logged_in) ? <Tab label='Sign Out' onClick={() => handleLogOut()}/> : <Tab label="Sign In" value="/login" component={Link} to={'/login'} style={link}/>}
+                  {(props.user.logged_in) ? <Tab label='Sign Out' onClick={() => (window.confirm("Are you sure you want to log out?")) ? handleLogOut() : null} style={link}/> : <Tab label="Sign In" value="/login" component={Link} to={'/login'} style={link}/>}
                   <Tab label={<ShoppingCart />}  value="/checkout" component={Link} to={'/checkout'} style={cart}/>
                 </Tabs>
               </AppBar>
