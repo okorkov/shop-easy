@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router} from "react-router-dom";
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 import axios from "axios";
+import rootReducer from './reducers';
 
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default class App extends Component {
 
@@ -19,12 +24,14 @@ export default class App extends Component {
   render() {
 
     return (
-      <Router>
-        <div className="App">
-          <Navbar />
-          <Footer />
-        </div>
-      </Router>
+      <Provider store={store} >
+        <Router>
+          <div className="App">
+            <Navbar />
+            <Footer />
+          </div>
+        </Router>
+      </Provider>
     )
   }
 }
