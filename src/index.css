@@ -11,7 +11,7 @@ body {
 }
 
 *{
-  animation: fadeInAnimation ease 0.5s;
+  animation: fadeInAnimation ease 0.4s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
