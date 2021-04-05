@@ -3,8 +3,9 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
-
-
+import { connect } from 'react-redux';
+import { signIn, signUp } from '../actions/user';
+import { withRouter } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,14 +29,23 @@ const LoginForm = (props) => {
     e.preventDefault();
     props.handleClose(e)
     axios.post(`${BASE_URL}/sessions`, login, {withCredentials: true})
-    .then(response => console.log(response)).catch(error => console.log(error.message))
+    .then(response => autentications(response)).catch(error => alert(error.message))
+  }
+
+  const autentications = (response) => {
+    if(response.data.logged_in) {
+      props.dispatch(signIn(response))
+      props.history.push('/checkout')
+    } else {
+      return props.loginError('Wrong Email or Password')
+    }
   }
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
     props.handleClose(e)
     axios.post(`${BASE_URL}/users`, signup, {withCredentials: true})
-    .then(response => console.log(response)).catch(error => console.log(error.message))
+    .then(response => props.dispatch(signUp(response))).catch(error => alert(error.message))
   }
 
   const handleLoginInput = (e) => {
@@ -76,7 +86,11 @@ const LoginForm = (props) => {
   );
 }
 
-export default LoginForm;
+const mapStateToProps = function(state) {
+  return state
+}
+
+export default connect(mapStateToProps)(withRouter(LoginForm));
 
 
 

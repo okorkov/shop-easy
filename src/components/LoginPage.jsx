@@ -6,6 +6,7 @@ import LoginForm from './LoginForm'
 
 export default function Login() {
   const [open, setOpen] = React.useState(false);
+  const [loginError, setLoginError] = React.useState(null);
 
   const handleClickOpen = (e) => {
     setOpen(true);
@@ -16,12 +17,13 @@ export default function Login() {
 
   return (
     <div style={{justifyContent: 'center', textAlign: 'center', paddingTop:'5%', paddingBottom:'33%'}}>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen} size="large">
+      <Button variant="outlined" color="primary" onClick={handleClickOpen} size="large" >
         Log In / Sign Up
       </Button>
-      <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-        <LoginForm handleClose={handleClose}/>
+      <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open} >
+        <LoginForm handleClose={handleClose} loginError={setLoginError}/>
       </Dialog>
+      {(loginError) ? <p style={{paddingTop: '2%', color: 'red'}}>{loginError}</p> : null}
     </div>
   );
 }

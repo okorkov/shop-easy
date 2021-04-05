@@ -15,7 +15,9 @@ import Categories from './Categories';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import SingleProduct from './SingleProduct';
 import CategorizedProducts from './CategorizedProducts';
-import ErrorPage from './ErrorPage'
+import ErrorPage from './ErrorPage';
+import { connect } from 'react-redux';
+
 
 
 function TabPanel(props) {
@@ -53,7 +55,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleTabs() {
+
+function SimpleTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -82,6 +85,8 @@ export default function SimpleTabs() {
     marginLeft: 'auto',
   }
 
+  const [logged_in, setLogged_in] = React.useState(false);
+
   return (
     <Router>
       <div className={classes.root}>
@@ -93,7 +98,7 @@ export default function SimpleTabs() {
                 <Tabs value={location.pathname} onChange={handleChange} aria-label="simple tabs example">
                   <Tab label="Browse"  value="/" component={Link} to={'/'} style={link}/>
                   <Tab label="Shop by Category"  value="/categories" component={Link} to={'/categories'} style={link}/>
-                  <Tab label="Sign In"  value="/dashboard" component={Link} to={'/dashboard'} style={link}/>
+                  {(props.user.logged_in) ? null : <Tab label="Sign In" value="/login" component={Link} to={'/login'} style={link}/>}
                   <Tab label={<ShoppingCart />}  value="/checkout" component={Link} to={'/checkout'} style={cart}/>
                 </Tabs>
               </AppBar>
@@ -101,7 +106,7 @@ export default function SimpleTabs() {
                 <Route path={'/'} exact component={ShoppingView} />
                 <Route path={'/categories/:id'} component={CategorizedProducts} />
                 <Route path={'/categories'} component={Categories} />
-                <Route path={'/dashboard'} component={Login} />
+                <Route path={'/login'} component={Login} />
                 <Route path={'/checkout'} component={Cart} />
                 <Route path={'/products/:id'} component={SingleProduct} />
                 <Route component={ErrorPage} />
@@ -113,3 +118,11 @@ export default function SimpleTabs() {
     </Router>
   );
 }
+
+const mapStateToProps = function(state) {
+  return state
+}
+
+
+export default connect(mapStateToProps)(SimpleTabs)
+

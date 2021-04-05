@@ -4,3 +4,17 @@ export const checkLoginStatus = (payload) => {
     payload
   }
 }
+
+export const signIn = (payload) => {
+  return {
+    type: "SIGN_IN",
+    payload
+  }
+}
+
+export const signUp = (payload) => {
+  return {
+    type: "SIGN_UP",
+    payload
+  }
+}
