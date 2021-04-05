@@ -45,7 +45,16 @@ const LoginForm = (props) => {
     e.preventDefault();
     props.handleClose(e)
     axios.post(`${BASE_URL}/users`, signup, {withCredentials: true})
-    .then(response => props.dispatch(signUp(response))).catch(error => alert(error.message))
+    .then(response => registerUser(response)).catch(error => alert(error.message))
+  }
+
+  const registerUser = (response) => {
+    if(response.data.status === 501) {
+      props.signUpError(response.data.message)
+    } else {
+      props.dispatch(signUp(response))
+      props.history.push('/')
+    }
   }
 
   const handleLoginInput = (e) => {

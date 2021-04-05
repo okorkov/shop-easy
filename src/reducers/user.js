@@ -25,7 +25,11 @@ export default (state = defaultState, action) => {
           user: action.payload.data.user
         };
     case 'SIGN_UP':
-      return;
+      return {
+        ...state,
+        logged_in: true,
+        user: action.payload.data.user
+      };
 
     case 'LOG_OUT':
       return {
