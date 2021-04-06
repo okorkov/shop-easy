@@ -101,7 +101,7 @@ function SimpleTabs(props) {
           path="/"
           render={({ location }) => (
             <Fragment>
-              <AppBar position="static">
+              <AppBar position="fixed">
                 <Tabs value={location.pathname} onChange={handleChange} aria-label="simple tabs example">
                   <Tab label="Browse"  value="/" component={Link} to={'/'} style={link}/>
                   <Tab label="Shop by Category"  value="/categories" component={Link} to={'/categories'} style={link}/>

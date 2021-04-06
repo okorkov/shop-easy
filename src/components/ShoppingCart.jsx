@@ -17,7 +17,7 @@ const StyledBadge = withStyles((theme) => ({
 function CustomizedBadges(props) {
   return (
     <IconButton aria-label="cart">
-      <StyledBadge badgeContent={props.user.currentCart.items.length} color="secondary">
+      <StyledBadge badgeContent={props.user.currentItems.length} color="secondary">
         <ShoppingCartIcon />
       </StyledBadge>
     </IconButton>

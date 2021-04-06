@@ -1,10 +1,8 @@
 const defaultState = {
   logged_in: false,
   user: {},
-  currentCart: {
-    id: null,
-    items: []
-  }
+  currentCart: {},
+  currentItems: []
 }
 
 export default (state = defaultState, action) => {
@@ -15,24 +13,30 @@ export default (state = defaultState, action) => {
         return {
           ...state,
           logged_in: true,
-          user: action.payload.data.user
+          user: action.payload.data.user,
+          currentCart: action.payload.data.cart,
+          currentItems: action.payload.data.cart_items
         };
       } else {
         return state;
       }
 
     case 'SIGN_IN':
-        return {
-          ...state,
-          logged_in: true,
-          user: action.payload.data.user
-        };
+      return {
+        ...state,
+        logged_in: true,
+        user: action.payload.data.user,
+        currentCart: action.payload.data.cart,
+        currentItems: action.payload.data.cart_items
+      }
     case 'SIGN_UP':
       return {
         ...state,
         logged_in: true,
-        user: action.payload.data.user
-      };
+        user: action.payload.data.user,
+        currentCart: action.payload.data.cart,
+        currentItems: action.payload.data.cart_items
+      }
 
     case 'LOG_OUT':
       return {
@@ -42,8 +46,11 @@ export default (state = defaultState, action) => {
       }
 
       case 'ADD_TO_CART':
-        debugger
-        return state;
+        
+        return {
+          ...state,
+          currentItems: [...state.currentItems, action.payload]
+        }
 
     default:
       return state;
