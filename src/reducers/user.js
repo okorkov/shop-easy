@@ -1,7 +1,10 @@
 const defaultState = {
   logged_in: false,
   user: {},
-  currentCart: {}
+  currentCart: {
+    id: null,
+    items: []
+  }
 }
 
 export default (state = defaultState, action) => {
@@ -37,6 +40,10 @@ export default (state = defaultState, action) => {
         logged_in: false,
         user: {}
       }
+
+      case 'ADD_TO_CART':
+        debugger
+        return state;
 
     default:
       return state;

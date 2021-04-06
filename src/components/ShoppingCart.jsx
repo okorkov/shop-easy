@@ -3,6 +3,7 @@ import Badge from '@material-ui/core/Badge';
 import { withStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { connect } from 'react-redux';
 
 const StyledBadge = withStyles((theme) => ({
   badge: {
@@ -13,12 +14,18 @@ const StyledBadge = withStyles((theme) => ({
   },
 }))(Badge);
 
-export default function CustomizedBadges() {
+function CustomizedBadges(props) {
   return (
     <IconButton aria-label="cart">
-      <StyledBadge badgeContent={1} color="secondary">
+      <StyledBadge badgeContent={props.user.currentCart.items.length} color="secondary">
         <ShoppingCartIcon />
       </StyledBadge>
     </IconButton>
   );
 }
+
+const mapStateToProps = function(state) {
+  return state
+}
+
+export default connect(mapStateToProps)(CustomizedBadges)

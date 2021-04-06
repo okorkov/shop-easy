@@ -11,7 +11,8 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import Grid from '@material-ui/core/Grid';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import { BrowserRouter as Switch, Route, Link } from "react-router-dom";
-
+import { connect } from 'react-redux';
+import { addToCart } from '../actions/cart'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,7 +47,7 @@ const desctiptionHandler = (description) => {
 
 
 
-export default function ProductCard(props) {
+function ProductCard(props) {
   const classes = useStyles();
   return (
     <Grid item>
@@ -66,8 +67,8 @@ export default function ProductCard(props) {
         </CardContent>
         {(props.data.quantity === 0) ? <p className='quantity-zero'>Out of Stock</p> :
         <CardActions disableSpacing>
-          <IconButton aria-label="add to cart">
-            <AddShoppingCartIcon fontSize="large" />
+          <IconButton aria-label="add to cart"  onClick={() => addToCart(props)}>
+            <AddShoppingCartIcon fontSize="large"/>
           </IconButton>
           <h5 className="price-tag"><AttachMoneyIcon  />{props.data.price}</h5>
         </CardActions>}
@@ -76,3 +77,8 @@ export default function ProductCard(props) {
   );
 }
 
+const mapStateToProps = function(state) {
+  return state
+}
+
+export default connect(mapStateToProps)(ProductCard)

@@ -105,8 +105,8 @@ function SimpleTabs(props) {
                 <Tabs value={location.pathname} onChange={handleChange} aria-label="simple tabs example">
                   <Tab label="Browse"  value="/" component={Link} to={'/'} style={link}/>
                   <Tab label="Shop by Category"  value="/categories" component={Link} to={'/categories'} style={link}/>
-                  {(props.user.logged_in) ? <Tab label='Sign Out' onClick={() => (window.confirm("Are you sure you want to log out?")) ? handleLogOut() : null} style={link}/> : <Tab label="Sign In" value="/login" component={Link} to={'/login'} style={link}/>}
-                  <Tab label={<ShoppingCart />}  value="/checkout" component={Link} to={'/checkout'} style={cart}/>
+                  <Tab label={<ShoppingCart />}  value="/checkout" component={Link} to={'/checkout'} style={link}/>
+                  {(props.user.logged_in) ? <Tab label='Sign Out' onClick={() => (window.confirm("Are you sure you want to log out?")) ? handleLogOut() : null} style={cart}/> : <Tab label="Sign In" value="/login" component={Link} to={'/login'} style={cart}/>}
                 </Tabs>
               </AppBar>
               <Switch>
@@ -129,7 +129,6 @@ function SimpleTabs(props) {
 const mapStateToProps = function(state) {
   return state
 }
-
 
 export default connect(mapStateToProps)(SimpleTabs)
 
