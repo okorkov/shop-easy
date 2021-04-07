@@ -4,6 +4,7 @@ import CartItem from './CartItem'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Button from '@material-ui/core/Button';
 
 function Cart(props) {
  
@@ -13,14 +14,14 @@ const renderCartItem = (cartItems) => {
   }))
 }
   return (
-    <div className='shopping-view' >
+    <div className='shopping-view' style={{textAlign: 'center'}} >
       <Typography variant="h2" color="textSecondary" size='18' style={{textAlign: 'center', paddingTop:'3%'}} > 
         Your Cart
       </Typography>
       <Grid container spacing={8} justify="center" alignItems="stretch" direction="row" style={{paddingTop: '5%'}}>
         {renderCartItem(props.user.currentItems)}
       </Grid >
-      <Typography variant="h4" color="textSecondary" size='18' style={{textAlign: 'center', paddingTop:'5%'}} > 
+      <Typography variant="h4" color="textSecondary" size='18' style={{textAlign: 'center', paddingTop:'5%', paddingBottom:'2%'}} > 
         Total: $ {(props.user.currentItems.length > 0) ? props.user.currentItems.map(function(obj) {
            return parseFloat(obj.unit_price);
         }).reduce(function(a, b) {
@@ -28,6 +29,7 @@ const renderCartItem = (cartItems) => {
         }, 0)
          : <CircularProgress />}
       </Typography>
+      <Button color="secondary" size="large" variant='contained'>Proceed to Checkout</Button>
     </div>
   );
 }
