@@ -99,6 +99,7 @@ function FullScreenDialog(props) {
         Credit/Debit Card Info: < br />
         <ShippingForm />
       </Typography>
+      
         </List>
       </Dialog>
     </div>
