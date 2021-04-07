@@ -28,7 +28,7 @@ const redirectToLogin = () => {
         {renderCartItem(props.user.currentItems)}
       </Grid >
       <Typography variant="h4" color="textSecondary" size='18' style={{textAlign: 'center', paddingTop:'5%', paddingBottom:'2%'}} > 
-        Total: $ {(props.user.currentItems.length > 0) ? props.user.currentItems.map(function(obj) {
+        Sub-total: $ {(props.user.currentItems.length > 0) ? props.user.currentItems.map(function(obj) {
            return parseFloat(obj.unit_price);
         }).reduce(function(a, b) {
           return a + b;

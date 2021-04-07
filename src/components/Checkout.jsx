@@ -2,8 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItem from '@material-ui/core/ListItem';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import AppBar from '@material-ui/core/AppBar';
@@ -15,6 +13,8 @@ import Slide from '@material-ui/core/Slide';
 import { connect } from 'react-redux';
 import CartItem from './CartItem';
 import Grid from '@material-ui/core/Grid';
+import UserCard from './UserCard';
+
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -48,6 +48,16 @@ function FullScreenDialog(props) {
     }))
   }
 
+  const subTotal = props.user.currentItems.map(function(obj) {
+    return parseFloat(obj.unit_price);
+ }).reduce(function(a, b) {
+   return a + b;
+ }, 0).toFixed(2)
+
+ const tax = parseInt(subTotal) * 0.095;
+ const shipping = 15;
+ const total =  (parseFloat(subTotal) + tax + shipping).toFixed(2);
+
   return (
     <div >
       <Button variant="contained" color="secondary" size="large" onClick={handleClickOpen}>
@@ -69,7 +79,19 @@ function FullScreenDialog(props) {
             {renderCartItem(props.user.currentItems)}
           </Grid >
           <Divider />
-          
+          <Typography variant="h6" color="textSecondary" size='18' style={{textAlign: 'center', paddingTop:'5%'}}> 
+        Sub-total: $ {(props.user.currentItems.length > 0) ? subTotal : 0}
+      </Typography>
+      <Typography variant="h6" color="textSecondary" size='18'>
+        Tax (9.5%): $ {tax}
+      </Typography>
+      <Typography variant="h6" color="textSecondary" size='18'>
+       Shipping: $ 15.00
+      </Typography>
+      <Typography variant="h4" color="textSecondary" size='18'>
+        Total Due: $ {total}
+      </Typography>
+        <UserCard  data={props.user}/>
         </List>
       </Dialog>
     </div>

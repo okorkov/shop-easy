@@ -84,7 +84,7 @@ const LoginForm = (props) => {
   <h3>Or Sign Up</h3>
   <form className={classes.root} noValidate autoComplete="off" onSubmit={(e) => handleSignupSubmit(e)}>
     <TextField id="email-register" value={signup.email} label="email" name="email" onChange={(e) => handleSignupInput(e)} />
-    <TextField id="name-register" value={signup.name} label="your name" name="name" onChange={(e) => handleSignupInput(e)}/>
+    <TextField id="name-register" value={signup.name} label="your name (first and last)" name="name" onChange={(e) => handleSignupInput(e)}/>
     <TextField id="password-register" value={signup.password} label="password" type="password" name="password" onChange={(e) => handleSignupInput(e)}/>
     <TextField id="password-confirm-register" value={signup.password_confirmation} label="confirm password" type="password" name="password_confirmation" onChange={(e) => handleSignupInput(e)}/>
     <Button autoFocus  color="primary" type="submit" disabled={signup.email.length === 0 || signup.password.length === 0 || signup.password_confirmation.length === 0 || signup.name.length === 0}>
