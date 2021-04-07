@@ -5,14 +5,24 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
+import { withRouter } from "react-router";
 
 function Cart(props) {
  
 const renderCartItem = (cartItems) => {
+  const data = []
+  cartItems.map(item => {
+
+  })
   return cartItems.map((cartItem => {
     return <CartItem data={cartItem} key={cartItem.id} />
   }))
 }
+
+const redirectToLogin = () => {
+  props.history.push('/login')
+}
+
   return (
     <div className='shopping-view' style={{textAlign: 'center'}} >
       <Typography variant="h2" color="textSecondary" size='18' style={{textAlign: 'center', paddingTop:'3%'}} > 
@@ -29,7 +39,9 @@ const renderCartItem = (cartItems) => {
         }, 0)
          : <CircularProgress />}
       </Typography>
-      <Button color="secondary" size="large" variant='contained'>Proceed to Checkout</Button>
+      {(props.user.logged_in)? <Button color="secondary" size="large" variant='contained'>Proceed to Checkout</Button> :
+      <Button color="primary" onClick={redirectToLogin} size="large" variant='contained'>Sign in to proceed</Button>}
+      
     </div>
   );
 }
@@ -38,4 +50,4 @@ const mapStateToProps = function(state) {
   return state
 }
 
-export default connect(mapStateToProps)(Cart)
+export default connect(mapStateToProps)(withRouter(Cart))
