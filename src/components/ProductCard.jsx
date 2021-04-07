@@ -49,6 +49,7 @@ const desctiptionHandler = (description) => {
 
 function ProductCard(props) {
   const classes = useStyles();
+  debugger
   return (
     <Grid item>
       <Card className={classes.root} >

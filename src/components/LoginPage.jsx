@@ -17,7 +17,7 @@ export default function Login() {
   };
 
   return (
-    <div style={{justifyContent: 'center', textAlign: 'center', paddingTop:'5%', paddingBottom:'33%'}}>
+    <div style={{justifyContent: 'center', textAlign: 'center', paddingTop:'20%', paddingBottom:'33%'}}>
       <Button variant="outlined" color="primary" onClick={handleClickOpen} size="large" >
         Log In / Sign Up
       </Button>

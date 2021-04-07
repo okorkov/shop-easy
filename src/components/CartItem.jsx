@@ -7,6 +7,9 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,18 +22,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CartOverview = () => {
+const CartOverview = (props) => {
   const classes = useStyles();
   return (
-    <div>
+    <div style={{padding: '1%'}}>
        <Grid item>
-        <List className={classes.root}>
-          <ListItem alignItems="flex-start">
+        <List className={classes.root} >
+          <ListItem style={{border: '1px solid pink'}}>
             <ListItemAvatar>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+              <Avatar alt="Remy Sharp" src={props.data.image} />
             </ListItemAvatar>
             <ListItemText
-              primary="Brunch this weekend?"
+              primary={props.data.name}
               secondary={
                 <React.Fragment>
                   <Typography
@@ -39,9 +42,11 @@ const CartOverview = () => {
                     className={classes.inline}
                     color="textPrimary"
                   >
-                    Ali Connors
                   </Typography>
-                  {" — I'll be in your neighborhood doing errands this…"}
+                  {`$${props.data.unit_price}`}
+                  <IconButton aria-label="delete" size="small">
+                    <DeleteIcon fontSize="small" />
+                  </IconButton>
                 </React.Fragment>
               }
             />

@@ -8,7 +8,9 @@ import Typography from '@material-ui/core/Typography';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import CategoryCard from './CategoryCard'
+import CategoryCard from './CategoryCard';
+import { addToCart } from '../actions/cart';
+import { connect } from 'react-redux';
 
 
 
@@ -27,6 +29,7 @@ class SingleProduct extends Component {
   }
 
   render() {
+    // debugger
     return (
       <>
       {
@@ -53,7 +56,10 @@ class SingleProduct extends Component {
           <CategoryCard data={this.state.data} category={this.state.data.category}/>
           {(this.state.data.quantity === 0) ? <><br /> <p className='quantity-zero' style={{color: 'red'}}>Sorry, Item is Out of Stock</p> </>:
           <CardActions disableSpacing>
-            <IconButton aria-label="add to cart">
+            <IconButton aria-label="add to cart" onClick={() => addToCart({
+              ...this.props,
+              data: this.state.data
+            })}>
               <AddShoppingCartIcon fontSize="large"/>
             </IconButton>
             <h5 className="price-tag"><AttachMoneyIcon  />{this.state.data.price}</h5>
@@ -66,10 +72,8 @@ class SingleProduct extends Component {
   }
 }
 
-export default SingleProduct;
+const mapStateToProps = function(state) {
+  return state
+}
 
-
-
-
-
-
+export default connect(mapStateToProps)(SingleProduct)

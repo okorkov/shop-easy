@@ -23,7 +23,7 @@ class ShoppingView extends Component {
   render() {
     return (
         <div className="shopping-view">
-            <Grid container spacing={8} justify="center" alignItems="stretch" style={{paddingTop: '5%'}}>
+          <Grid container spacing={8} justify="center" alignItems="stretch" style={{paddingTop: '5%'}}>
             {(this.state.dataLoaded) ? this.renderProducts() : <div style={{padding: '20%'}}><h3>Connecting to heroku server, usually it takes about 10-15 seconds, please wait....</h3><div style={{textAlign: 'center'}}><CircularProgress /></div></div>}
           </Grid> 
         </div>
