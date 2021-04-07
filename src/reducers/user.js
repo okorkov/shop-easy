@@ -18,7 +18,11 @@ export default (state = defaultState, action) => {
           currentItems: action.payload.data.cart_items
         };
       } else {
-        return state;
+        return {
+          ...state,
+          currentCart: action.payload.data.cart,
+          currentItems: action.payload.data.cart_items
+        };
       }
 
     case 'SIGN_IN':

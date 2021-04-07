@@ -36,7 +36,7 @@ const redirectToLogin = () => {
            return parseFloat(obj.unit_price);
         }).reduce(function(a, b) {
           return a + b;
-        }, 0)
+        }, 0).toFixed(2)
          : <CircularProgress />}
       </Typography>
       {(props.user.logged_in)? <Button color="secondary" size="large" variant='contained'>Proceed to Checkout</Button> :
