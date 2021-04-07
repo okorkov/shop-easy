@@ -59,3 +59,7 @@ footer {
   min-height: 40rem;
   padding-top: 5rem;
 }
+
+.MuiGrid-spacing-xs-8 {
+  width: 100% !important;
+}
