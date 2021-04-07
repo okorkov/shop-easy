@@ -3,17 +3,13 @@ import { connect } from 'react-redux';
 import CartItem from './CartItem'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import Button from '@material-ui/core/Button';
 import { withRouter } from "react-router";
+import Checkout from './Checkout';
 
 function Cart(props) {
  
 const renderCartItem = (cartItems) => {
-  const data = []
-  cartItems.map(item => {
-
-  })
   return cartItems.map((cartItem => {
     return <CartItem data={cartItem} key={cartItem.id} />
   }))
@@ -37,9 +33,9 @@ const redirectToLogin = () => {
         }).reduce(function(a, b) {
           return a + b;
         }, 0).toFixed(2)
-         : <CircularProgress />}
+         : 0}
       </Typography>
-      {(props.user.logged_in)? <Button color="secondary" size="large" variant='contained'>Proceed to Checkout</Button> :
+      {(props.user.logged_in)? <Checkout /> :
       <Button color="primary" onClick={redirectToLogin} size="large" variant='contained'>Sign in to proceed</Button>}
       
     </div>

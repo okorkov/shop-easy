@@ -62,4 +62,5 @@ footer {
 
 .MuiGrid-spacing-xs-8 {
   width: 100% !important;
+  margin: 0 !important;
 }
