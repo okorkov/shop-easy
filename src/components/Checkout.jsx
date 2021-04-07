@@ -14,6 +14,9 @@ import { connect } from 'react-redux';
 import CartItem from './CartItem';
 import Grid from '@material-ui/core/Grid';
 import UserCard from './UserCard';
+import ShippingForm from './ShippingForm';
+
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -91,7 +94,11 @@ function FullScreenDialog(props) {
       <Typography variant="h4" color="textSecondary" size='18'>
         Total Due: $ {total}
       </Typography>
-        <UserCard  data={props.user}/>
+        <UserCard  data={props.user}/>< br />
+      <Typography variant="h6" color="textSecondary" size='18'>
+        Credit/Debit Card Info: < br />
+        <ShippingForm />
+      </Typography>
         </List>
       </Dialog>
     </div>
