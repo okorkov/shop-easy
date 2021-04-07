@@ -9,7 +9,9 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
-
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { deleteCartItem } from '../actions/cart'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,6 +23,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'inline',
   },
 }));
+
+const handleDelete = (props) => {
+  
+  axios.delete(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/cart_items/${props.data.id}`, {withCredentials: true})
+  .then(props.dispatch(deleteCartItem(props.data)))
+}
 
 const CartOverview = (props) => {
   const classes = useStyles();
@@ -44,7 +52,7 @@ const CartOverview = (props) => {
                   >
                   </Typography>
                   {`$${props.data.unit_price}`}
-                  <IconButton aria-label="delete" size="small">
+                  <IconButton aria-label="delete" size="small" onClick={() => handleDelete(props)}>
                     <DeleteIcon fontSize="small" />
                   </IconButton>
                 </React.Fragment>
@@ -57,4 +65,8 @@ const CartOverview = (props) => {
   );
 }
 
-export default CartOverview;
+const mapStateToProps = function(state) {
+  return state
+}
+
+export default connect(mapStateToProps)(CartOverview)

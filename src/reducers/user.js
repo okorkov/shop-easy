@@ -50,10 +50,15 @@ export default (state = defaultState, action) => {
       }
 
       case 'ADD_TO_CART':
-        
         return {
           ...state,
           currentItems: [...state.currentItems, action.payload]
+        }
+
+        case 'DELETE_CART_ITEM':
+        return {
+          ...state,
+          currentItems: state.currentItems.filter(item => item.id != action.payload.id)
         }
 
     default:
