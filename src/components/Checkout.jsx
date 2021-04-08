@@ -64,7 +64,7 @@ function FullScreenDialog(props) {
  }, 0).toFixed(2)
 
  const tax = parseInt(subTotal * 0.095);
- const shipping = 15;
+ const shipping = (props.user.currentItems.length > 1) ? (15 + props.user.currentItems.length * 5) : 15;
  const total =  (parseFloat(subTotal) + tax + shipping).toFixed(2);
 
  const [address, setAddress] = React.useState("");
@@ -107,7 +107,7 @@ const handleCheckout = () => {
         Tax (9.5%): $ {tax}
       </Typography>
       <Typography variant="h6" color="textSecondary" size='18'>
-       Shipping: $ 15.00
+       Shipping: $ {shipping}
       </Typography>
       <Typography variant="h4" color="textSecondary" size='18'>
         Total Due: $ {total}

@@ -10,7 +10,7 @@ import { red } from '@material-ui/core/colors';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import Grid from '@material-ui/core/Grid';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
-import { BrowserRouter as Link } from "react-router-dom";
+import { BrowserRouter as Switch, Route, Link } from "react-router-dom";
 import { connect } from 'react-redux';
 import { addToCart } from '../actions/cart'
 
