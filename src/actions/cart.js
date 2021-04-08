@@ -11,3 +11,10 @@ export const deleteCartItem = (payload) => {
     payload
   }
 }
+
+export const checkout = (payload) => {
+  return {
+    type: "CHECKOUT",
+    payload
+  }
+}

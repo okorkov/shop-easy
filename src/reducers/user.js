@@ -1,7 +1,7 @@
 const defaultState = {
   logged_in: false,
   user: {},
-  currentCart: {},
+  currentCart: null,
   currentItems: []
 }
 
@@ -59,6 +59,12 @@ export default (state = defaultState, action) => {
         return {
           ...state,
           currentItems: state.currentItems.filter(item => item.id != action.payload.id)
+        }
+
+        case 'CHECKOUT':
+        return {
+          ...state,
+          currentItems: []
         }
 
     default:

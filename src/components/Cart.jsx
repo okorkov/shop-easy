@@ -18,7 +18,6 @@ const renderCartItem = (cartItems) => {
 const redirectToLogin = () => {
   props.history.push('/login')
 }
-
   return (
     <div className='shopping-view' style={{textAlign: 'center'}} >
       <Typography variant="h2" color="textSecondary" size='18' style={{textAlign: 'center', paddingTop:'3%'}} > 

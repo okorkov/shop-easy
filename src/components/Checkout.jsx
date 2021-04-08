@@ -15,7 +15,9 @@ import CartItem from './CartItem';
 import Grid from '@material-ui/core/Grid';
 import UserCard from './UserCard';
 import ShippingForm from './ShippingForm';
-
+import TextField from '@material-ui/core/TextField';
+import axios from 'axios';
+import { checkout } from '../actions/cart'
 
 
 
@@ -61,9 +63,20 @@ function FullScreenDialog(props) {
  const shipping = 15;
  const total =  (parseFloat(subTotal) + tax + shipping).toFixed(2);
 
+ const [address, setAddress] = React.useState("");
+
+const handleChange = (e) => {
+  setAddress(e.target.value)
+}
+
+const handleCheckout = () => {
+  axios.post(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/orders`, {user: props.user, address: address, total: total},{withCredentials: true})
+  .then(props.dispatch(checkout({dispatch: props.dispatch}))).then(handleClose())
+}
+
   return (
     <div >
-      <Button variant="contained" color="secondary" size="large" onClick={handleClickOpen}>
+      <Button variant="contained" color="secondary" size="large" onClick={handleClickOpen} disabled={(props.user.currentItems.length > 0)? false : true}>
         Proceed to Checkout
       </Button>
       <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition} style={{justifyContent: 'center', textAlign: 'center'}}>
@@ -98,8 +111,20 @@ function FullScreenDialog(props) {
       <Typography variant="h6" color="textSecondary" size='18'>
         Credit/Debit Card Info: < br />
         <ShippingForm />
+        <TextField
+            onChange={(e) => handleChange(e)}
+            style={{ margin: 8 }}
+            id="outlined-multiline-static"
+            label="Shipping Address"
+            multiline
+            rows={4}
+            variant="outlined"
+          />
       </Typography>
-      
+        <br /> 
+      <Button variant="contained" color="secondary" size="large" onClick={() => handleCheckout()} >
+        Complete Order
+      </Button>
         </List>
       </Dialog>
     </div>

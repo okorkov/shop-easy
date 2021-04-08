@@ -35,7 +35,7 @@ export default class PaymentForm extends React.Component {
         <form>
         	<TextField
             style={{ margin: 8 }}
-            type="tel"
+            type="number"
             name="number"
             placeholder="Card Number"
             onChange={this.handleInputChange}
@@ -51,12 +51,12 @@ export default class PaymentForm extends React.Component {
           />
            <TextField
             style={{ margin: 8 }}
-            type="tel"
+            type="number"
             name="expiry"
             placeholder="Expiration"
             onChange={this.handleInputChange}
             onFocus={this.handleInputFocus}
-          />
+          /> <br /> <br />
         </form>
       </div>
     );
