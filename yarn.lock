@@ -1443,7 +1443,7 @@
     "@types/yargs" "^15.0.0"
     "chalk" "^4.0.0"
 
-"@material-ui/core@^4.0.0", "@material-ui/core@^4.11.3", "@material-ui/core@^4.9.10":
+"@material-ui/core@^4.0.0", "@material-ui/core@^4.11.3", "@material-ui/core@^4.5.2", "@material-ui/core@^4.9.10":
   "integrity" "sha512-Adt40rGW6Uds+cAyk3pVgcErpzU/qxc7KBR94jFHBYretU4AtWZltYcNsbeMn9tXL86jjVL1kuGcIHsgLgFGRw=="
   "resolved" "https://registry.npmjs.org/@material-ui/core/-/core-4.11.3.tgz"
   "version" "4.11.3"
@@ -9607,6 +9607,14 @@
     "iconv-lite" "0.4.24"
     "unpipe" "1.0.0"
 
+"react-alert-template-mui@^1.0.7":
+  "integrity" "sha512-78g5Uv6MdVaBvuYa+olfiZPghp9AMF+sFWNA1NGQxfy7w+Opg5sePJh9yp9dUhX6dmFFkh/EcxcNEalhgMGNpw=="
+  "resolved" "https://registry.npmjs.org/react-alert-template-mui/-/react-alert-template-mui-1.0.7.tgz"
+  "version" "1.0.7"
+  dependencies:
+    "@material-ui/core" "^4.5.2"
+    "react" "^16.11.0"
+
 "react-app-polyfill@^2.0.0":
   "integrity" "sha512-0sF4ny9v/B7s6aoehwze9vJNWcmCemAUYBVasscVr92+UYiEqDXOxfKjXN685mDaMRNF3WdhHQs76oTODMocFA=="
   "resolved" "https://registry.npmjs.org/react-app-polyfill/-/react-app-polyfill-2.0.0.tgz"
@@ -9858,7 +9866,7 @@
     "loose-envify" "^1.4.0"
     "prop-types" "^15.6.2"
 
-"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0", "react@^15.0.0 || ^16.0.0", "react@^16.0.0", "react@^16.14.0", "react@^16.3.0 || ^17", "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17", "react@>= 16", "react@>= 16.8.0", "react@>=15", "react@>=16.6.0":
+"react@*", "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0", "react@^15.0.0 || ^16.0.0", "react@^16.0.0", "react@^16.11.0", "react@^16.14.0", "react@^16.3.0 || ^17", "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17", "react@>= 16", "react@>= 16.8.0", "react@>=15", "react@>=16.6.0":
   "integrity" "sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.14.0.tgz"
   "version" "16.14.0"
@@ -11269,7 +11277,7 @@
     "loader-utils" "^2.0.0"
     "schema-utils" "^2.7.0"
 
-"styled-components@^5.2.3", "styled-components@>= 2", "styled-components@>=3.0.0":
+"styled-components@>= 2", "styled-components@>=3.0.0":
   "integrity" "sha512-BlR+KrLW3NL1yhvEB+9Nu9Dt51CuOnHoxd+Hj+rYPdtyR8X11uIW9rvhpy3Dk4dXXBsiW1u5U78f00Lf/afGoA=="
   "resolved" "https://registry.npmjs.org/styled-components/-/styled-components-5.2.3.tgz"
   "version" "5.2.3"
@@ -12057,7 +12065,7 @@
   dependencies:
     "minimalistic-assert" "^1.0.0"
 
-"web-vitals@^1.0.1":
+"web-vitals@^1.1.1":
   "integrity" "sha512-jYOaqu01Ny1NvMwJ3dBJDUOJ2PGWknZWH4AUnvFOscvbdHMERIKT2TlgiAey5rVyfOePG7so2JcXXZdSnBvioQ=="
   "resolved" "https://registry.npmjs.org/web-vitals/-/web-vitals-1.1.1.tgz"
   "version" "1.1.1"

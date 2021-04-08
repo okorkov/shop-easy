@@ -16,11 +16,10 @@ const store = createStore(rootReducer, compose(
 
 
 ReactDOM.render(
-  <React.StrictMode>
+
     <Provider store={store} template={AlertMUITemplate} >
       <App />
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
   document.getElementById('root')
 );
 

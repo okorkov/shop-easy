@@ -13,6 +13,7 @@
     "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "react": "^16.0.0",
+    "react-alert-template-mui": "^1.0.7",
     "react-credit-card-input": "^1.1.5",
     "react-credit-cards": "^0.8.3",
     "react-dom": "^16.0.0",
@@ -25,9 +26,8 @@
     "reactjs-localstorage": "^1.0.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^5.2.3",
     "thunk": "^0.0.1",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.1.1"
   },
   "scripts": {
     "start": "react-scripts start",

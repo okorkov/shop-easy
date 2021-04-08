@@ -112,9 +112,9 @@ function SimpleTabs(props) {
               <Switch>
                 <Route path={'/'} exact component={ShoppingView} />
                 <Route path={'/categories/:id'} component={CategorizedProducts} />
-                <Route path={'/categories'} component={Categories} />
                 <Route path={'/login'} component={Login} />
                 <Route path={'/checkout'} component={Cart} />
+                <Route path={'/categories'} component={Categories} />
                 <Route path={'/products/:id'} component={SingleProduct} />
                 <Route component={ErrorPage} />
               </Switch>

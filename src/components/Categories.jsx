@@ -26,7 +26,7 @@ export default class Categories extends Component {
     return (
       <div className="shopping-view">
         <Grid container spacing={8} justify="center" alignItems="center" style={{paddingTop: '5%'}}>
-          {(this.state.dataLoaded) ? this.renderCategories() : <div style={{padding: '20%'}}><h3>Connecting to heroku server, usually it takes about 10-15 seconds, please wait....</h3><div style={{textAlign: 'center'}}><CircularProgress /></div></div>}
+          {(this.state.dataLoaded) ? this.renderCategories() : <div style={{padding: '20%'}}><div style={{textAlign: 'center'}}><CircularProgress /></div></div>}
         </Grid>
       </div>
     );

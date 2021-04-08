@@ -63,7 +63,7 @@ export default (state = defaultState, action) => {
         case 'DELETE_CART_ITEM':
         return {
           ...state,
-          currentItems: state.currentItems.filter(item => item.id != action.payload.id)
+          currentItems: state.currentItems.filter(item => item.id !== action.payload.id)
         }
 
         case 'CHECKOUT':
