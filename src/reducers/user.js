@@ -2,7 +2,8 @@ const defaultState = {
   logged_in: false,
   user: {},
   currentCart: null,
-  currentItems: []
+  currentItems: [],
+  orderPlaced: false
 }
 
 export default (state = defaultState, action) => {
@@ -15,13 +16,15 @@ export default (state = defaultState, action) => {
           logged_in: true,
           user: action.payload.data.user,
           currentCart: action.payload.data.cart,
-          currentItems: action.payload.data.cart_items
+          currentItems: action.payload.data.cart_items,
+          orderPlaced: false
         };
       } else {
         return {
           ...state,
           currentCart: action.payload.data.cart,
-          currentItems: action.payload.data.cart_items
+          currentItems: action.payload.data.cart_items,
+          orderPlaced: false
         };
       }
 
@@ -31,7 +34,8 @@ export default (state = defaultState, action) => {
         logged_in: true,
         user: action.payload.data.user,
         currentCart: action.payload.data.cart,
-        currentItems: action.payload.data.cart_items
+        currentItems: action.payload.data.cart_items,
+        orderPlaced: false
       }
     case 'SIGN_UP':
       return {
@@ -52,7 +56,8 @@ export default (state = defaultState, action) => {
       case 'ADD_TO_CART':
         return {
           ...state,
-          currentItems: [...state.currentItems, action.payload]
+          currentItems: [...state.currentItems, action.payload],
+          orderPlaced: false
         }
 
         case 'DELETE_CART_ITEM':
@@ -65,6 +70,18 @@ export default (state = defaultState, action) => {
         return {
           ...state,
           currentItems: []
+        }
+
+        case 'ORDER_PLACED':
+        return {
+          ...state,
+          orderPlaced: true
+        }
+
+        case 'ORDER_REFRESHED':
+        return {
+          ...state,
+          orderPlaced: false
         }
 
     default:

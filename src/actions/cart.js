@@ -18,3 +18,16 @@ export const checkout = (payload) => {
     payload
   }
 }
+
+export const orderPlaced = () => {
+  return {
+    type: "ORDER_PLACED"
+  }
+}
+
+export const orderRefreshed = () => {
+  return {
+    type: "ORDER_REFRESHED"
+  }
+}
+

@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { withRouter } from "react-router";
 import Checkout from './Checkout';
+import Alert from '@material-ui/lab/Alert';
+import { orderRefreshed } from '../actions/cart'
 
 function Cart(props) {
  
@@ -18,11 +20,21 @@ const renderCartItem = (cartItems) => {
 const redirectToLogin = () => {
   props.history.push('/login')
 }
+
+const handleClose = () => {
+  props.dispatch(orderRefreshed())
+}
+
   return (
     <div className='shopping-view' style={{textAlign: 'center'}} >
       <Typography variant="h2" color="textSecondary" size='18' style={{textAlign: 'center', paddingTop:'3%'}} > 
         Your Cart
       </Typography>
+      {(props.user.orderPlaced) ?
+      <Alert onClose={() => handleClose()} variant="outlined" style={{padding: '30px'}}>
+        You're Order Received And Won't be Shipped Since This is not a Real Store!
+      </Alert> : 
+        null}
       <Grid container spacing={8} justify="center" alignItems="stretch" direction="row" style={{paddingTop: '5%'}}>
         {renderCartItem(props.user.currentItems)}
       </Grid >
@@ -36,7 +48,6 @@ const redirectToLogin = () => {
       </Typography>
       {(props.user.logged_in)? <Checkout /> :
       <Button color="primary" onClick={redirectToLogin} size="large" variant='contained'>Sign in to proceed</Button>}
-      
     </div>
   );
 }
