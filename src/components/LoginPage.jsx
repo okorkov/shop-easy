@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+// import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import LoginForm from './LoginForm'
+import LoginForm from './LoginForm';
 
 
 export default function Login() {
   const [open, setOpen] = React.useState(false);
   const [loginError, setLoginError] = React.useState(null);
   const [signUpError, setSignUpError] = React.useState([]);
+  const [allowClose, setAllowClose] = React.useState(false);
 
   const handleClickOpen = (e) => {
     setOpen(true);
@@ -15,6 +17,13 @@ export default function Login() {
   const handleClose = (e) => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    if (allowClose === false){
+      setAllowClose(true)
+      handleClickOpen()
+    } 
+  });
 
   return (
     <div style={{justifyContent: 'center', textAlign: 'center', paddingTop:'20%', paddingBottom:'33%'}}>
