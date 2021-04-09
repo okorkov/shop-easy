@@ -54,7 +54,7 @@ function ProductCard(props) {
       <Card className={classes.root} >
         <Link to={"/products/" + props.data.id}>
           <CardHeader title={props.data.name}/>
-          <img className="img-fluid product-image" src={props.data.image} alt={props.data.name} ></img>
+          <img className=" product-image" src={props.data.image} alt={props.data.name} ></img>
          </Link>
         <CardContent>
           <Typography variant="body2" color="textSecondary" component="p" > 
