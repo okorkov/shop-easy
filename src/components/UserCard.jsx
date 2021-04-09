@@ -27,7 +27,7 @@ export default function SimpleCard(props) {
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Typography variant="h5" component="h2">
+        <Typography variant="h5" component="h2" color="textSecondary">
           Name: {props.data.user.name}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">

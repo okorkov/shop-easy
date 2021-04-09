@@ -9,14 +9,13 @@ class ShoppingView extends Component {
   state ={
     dataLoaded: false,
     productData: [],
-    originalData: [],
+    backupData: [],
     search: ''
   }
 
   componentDidMount() {
-    fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/products`).then(promise => promise.json()).then(data => this.setState({ dataLoaded: true, productData: data}))
+    fetch(`${process.env.REACT_APP_BACKEND_BASE_URL}/api/products`).then(promise => promise.json()).then(data => this.setState({ dataLoaded: true, productData: data, backupData: data}))
   }
-
 
   renderProducts () {
     return this.state.productData.map(product => <ProductCard key={product.id} data={product} />)
@@ -25,12 +24,17 @@ class ShoppingView extends Component {
   handleChange(e) {
     this.setState({
       ...this.state,
-      search: e
+      search: e,
+      productData: this.filterItems()
     })
   }
 
-  handleSubmitSearch() {
-    console.log(this.state.search)
+
+  filterItems(){
+    if(this.state.search.length === 1) {return this.state.backupData}
+    return this.state.backupData.filter(product => {
+      return (product.name.toLowerCase().indexOf(this.state.search) > -1)
+    })
   }
 
   render() {
@@ -40,8 +44,7 @@ class ShoppingView extends Component {
             <SearchBar
               value={this.state.search}
               onChange={(e) => this.handleChange(e)}
-              onRequestSearch={() => this.handleSubmitSearch()}
-              
+              // onRequestSearch={() => this.handleSubmitSearch()}
             />
           </div>
           <Grid container spacing={8} justify="center" alignItems="stretch" style={{paddingTop: '5%'}}>
