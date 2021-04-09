@@ -10,20 +10,21 @@ export default (state = defaultState, action) => {
 
   switch(action.type) {
     case 'CHECK_LOGIN_STATUS':
-      if(action.payload.data.logged_in) {
+      debugger
+      if(action.payload.logged_in) {
         return {
           ...state,
           logged_in: true,
-          user: action.payload.data.user,
-          currentCart: action.payload.data.cart,
-          currentItems: action.payload.data.cart_items,
+          user: action.payload.user,
+          currentCart: action.payload.cart,
+          currentItems: action.payload.cart_items,
           orderPlaced: false
         };
       } else {
         return {
           ...state,
-          currentCart: action.payload.data.cart,
-          currentItems: action.payload.data.cart_items,
+          currentCart: action.payload.cart,
+          currentItems: action.payload.cart_items,
           orderPlaced: false
         };
       }

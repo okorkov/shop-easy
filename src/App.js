@@ -13,10 +13,17 @@ class App extends Component {
 
   checkLoginStatus() {
     const BASE_URL = process.env.REACT_APP_BACKEND_BASE_URL
-    axios.get(`${BASE_URL}/users/logged_in`, {withCredentials: true}).then((response) => {
-      this.props.dispatch(checkLoginStatus(response))
-    })
+    // axios.get(`${BASE_URL}/users/logged_in`, {withCredentials: true}).then((response) => {
+    //   this.props.dispatch(checkLoginStatus(response))
+    // })
+    fetch(`${BASE_URL}/users/logged_in`, { credentials: 'include' }).then(res => res.json()).then(response => this.props.dispatch(checkLoginStatus(response)))
   }
+
+  // fetch(
+  //   '/cookie-auth-protected-route',
+  //   { credentials: 'include' } // could also try 'same-origin'
+  // ).then(res => {
+  //   if (res.ok) return res.json()
 
   componentDidMount() {
     this.checkLoginStatus()
