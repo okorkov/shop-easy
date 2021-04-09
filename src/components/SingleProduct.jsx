@@ -61,6 +61,7 @@ class SingleProduct extends Component {
               data: this.state.data
             })}>
               <AddShoppingCartIcon fontSize="large"/>
+              Add to Cart
             </IconButton>
             <h5 className="price-tag"><AttachMoneyIcon  />{this.state.data.price}</h5>
           </CardActions>}
