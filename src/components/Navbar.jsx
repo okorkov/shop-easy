@@ -19,6 +19,7 @@ import ErrorPage from './ErrorPage';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import {logOut} from '../actions/user';
+import { withRouter } from "react-router";
 
 
 function TabPanel(props) {
@@ -89,8 +90,9 @@ function SimpleTabs(props) {
   const [logged_in, setLogged_in] = React.useState(false);
 
   const handleLogOut = () => {
-      axios.delete(`${process.env.REACT_APP_BACKEND_BASE_URL}/sessions/${props.user.user.id}`, {withCredentials: true})
-      .then(props.dispatch(logOut()))
+    props.history.push('/')
+    axios.delete(`${process.env.REACT_APP_BACKEND_BASE_URL}/sessions/${props.user.user.id}`, {withCredentials: true})
+    .then(props.dispatch(logOut()))
   }
 
 
@@ -130,5 +132,4 @@ const mapStateToProps = function(state) {
   return state
 }
 
-export default connect(mapStateToProps)(SimpleTabs)
-
+export default connect(mapStateToProps)(withRouter(SimpleTabs));

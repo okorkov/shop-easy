@@ -10,21 +10,20 @@ export default (state = defaultState, action) => {
 
   switch(action.type) {
     case 'CHECK_LOGIN_STATUS':
-      debugger
-      if(action.payload.logged_in) {
+      if(action.payload.data.logged_in) {
         return {
           ...state,
           logged_in: true,
-          user: action.payload.user,
-          currentCart: action.payload.cart,
-          currentItems: action.payload.cart_items,
+          user: action.payload.data.user,
+          currentCart: action.payload.data.cart,
+          currentItems: action.payload.data.cart_items,
           orderPlaced: false
         };
       } else {
         return {
           ...state,
-          currentCart: action.payload.cart,
-          currentItems: action.payload.cart_items,
+          currentCart: action.payload.data.cart,
+          currentItems: action.payload.data.cart_items,
           orderPlaced: false
         };
       }
@@ -35,7 +34,7 @@ export default (state = defaultState, action) => {
         logged_in: true,
         user: action.payload.data.user,
         currentCart: action.payload.data.cart,
-        currentItems: action.payload.data.cart_items,
+        currentItems: [...state.currentItems],
         orderPlaced: false
       }
     case 'SIGN_UP':
@@ -44,14 +43,15 @@ export default (state = defaultState, action) => {
         logged_in: true,
         user: action.payload.data.user,
         currentCart: action.payload.data.cart,
-        currentItems: action.payload.data.cart_items
+        currentItems:  [...state.currentItems],
       }
 
     case 'LOG_OUT':
       return {
         ...state,
         logged_in: false,
-        user: {}
+        user: {},
+        currentItems: []
       }
 
       case 'ADD_TO_CART':

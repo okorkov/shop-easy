@@ -53,7 +53,7 @@ const LoginForm = (props) => {
       props.signUpError(response.data.message)
     } else {
       props.dispatch(signUp(response))
-      props.history.push('/')
+      props.history.push('/checkout')
     }
   }
 
