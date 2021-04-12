@@ -54,7 +54,7 @@ class SingleProduct extends Component {
           <br /> <br /> 
           <h4><strong>More in this category:</strong></h4>
           <CategoryCard data={this.state.data} category={this.state.data.category}/>
-          {(this.state.data.quantity < 0) ? <><br /> <p className='quantity-zero' style={{color: 'red'}}>Sorry, Item is Out of Stock</p> </>:
+          {(this.state.data.quantity <= 0) ? <><br /> <p className='quantity-zero' style={{color: 'red'}}>Sorry, Item is Out of Stock</p> </>:
           <CardActions disableSpacing>
             <IconButton aria-label="add to cart" onClick={() => addToCart({
               ...this.props,

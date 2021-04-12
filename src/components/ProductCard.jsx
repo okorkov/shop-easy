@@ -65,7 +65,7 @@ function ProductCard(props) {
           Only {props.data.quantity} left in stock!
         </Typography> : null}
         </CardContent>
-        {(props.data.quantity < 0) ? <p className='quantity-zero'>Out of Stock</p> :
+        {(props.data.quantity <= 0) ? <p className='quantity-zero'>Out of Stock</p> :
         <CardActions disableSpacing>
           <IconButton aria-label="add to cart"  onClick={() => addToCart(props)}>
             <AddShoppingCartIcon fontSize="large"/>
