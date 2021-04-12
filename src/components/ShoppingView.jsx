@@ -48,7 +48,7 @@ class ShoppingView extends Component {
             />
           </div>
           <Grid container spacing={8} justify="center" alignItems="stretch" style={{paddingTop: '5%'}}>
-            {(this.state.dataLoaded) ? this.renderProducts() : <div style={{padding: '20%'}}><div style={{textAlign: 'center'}}><CircularProgress /></div></div>}
+            {(this.state.dataLoaded) ? this.renderProducts() : <div style={{padding: '20%'}}><div style={{textAlign: 'center'}}><h3>Connecting to Heroku</h3><h4>Please Wait</h4><br /><CircularProgress /></div></div>}
           </Grid> 
         </div>
     );
