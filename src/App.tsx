@@ -7,9 +7,11 @@ import { checkLoginStatus } from './actions/user'
 import axios from "axios";
 
 
+interface IAppProps {
+  [key: string]: any;
+}
 
-
-class App extends Component {
+class App extends Component <IAppProps>{
 
   checkLoginStatus() {
     const BASE_URL = process.env.REACT_APP_BACKEND_BASE_URL

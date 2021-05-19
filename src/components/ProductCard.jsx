@@ -40,14 +40,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const desctiptionHandler = (description) => {
-  let result = `${description.slice(0,40)}...`
-  return result
-}
-
-
 
 function ProductCard(props) {
+  
+  const desctiptionHandler = (description) => {
+    let result = `${description.slice(0,40)}...`
+    return result
+  }
+  
   const classes = useStyles();
   return (
     <Grid item>
@@ -67,11 +67,12 @@ function ProductCard(props) {
         </CardContent>
         {(props.data.quantity <= 0) ? <p className='quantity-zero'>Out of Stock</p> :
         <CardActions disableSpacing>
-          <IconButton aria-label="add to cart"  onClick={() => addToCart(props)}>
+          <IconButton aria-label="add to cart"  onClick={() => props.addToCart(props)}>
             <AddShoppingCartIcon fontSize="large"/>
           </IconButton>
           <h5 className="price-tag"><AttachMoneyIcon  />{props.data.price}</h5>
         </CardActions>}
+     
       </Card>
     </Grid>
   );
@@ -81,4 +82,4 @@ const mapStateToProps = function(state) {
   return state
 }
 
-export default connect(mapStateToProps)(ProductCard)
+export default connect(mapStateToProps, {addToCart})(ProductCard)

@@ -10,6 +10,10 @@ body {
   background: #c8dbff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 *{
   animation: fadeInAnimation ease 0.4s;
   animation-iteration-count: 1;

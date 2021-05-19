@@ -29,7 +29,7 @@ class SingleProduct extends Component {
   }
 
   render() {
-    // debugger
+
     return (
       <>
       {

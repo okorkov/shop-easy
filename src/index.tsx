@@ -9,15 +9,29 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import AlertMUITemplate from "react-alert-template-mui";
 
-const store = createStore(rootReducer, compose(
-  applyMiddleware(thunk),
-  window.devToolsExtension ? window.devToolsExtension() : f => f
-));
+
+// const store = createStore(rootReducer, compose(
+//   applyMiddleware(thunk),
+//   window.devToolsExtension ? window.devToolsExtension() : f => f
+// ));
+
+interface IIndexProps {
+  [key: string]: any;
+}
+
+const store = createStore(
+  rootReducer,
+  compose(
+      applyMiddleware(thunk),
+      (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+  )       
+
+);
 
 
 ReactDOM.render(
 
-    <Provider store={store} template={AlertMUITemplate} >
+    <Provider store={store} >
       <App />
     </Provider>,
   document.getElementById('root')
