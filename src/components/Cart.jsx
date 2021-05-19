@@ -9,6 +9,7 @@ import Checkout from './Checkout';
 import Alert from '@material-ui/lab/Alert';
 import { orderRefreshed } from '../actions/cart'
 
+
 function Cart(props) {
  
 const renderCartItem = (cartItems) => {

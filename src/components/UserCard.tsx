@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SimpleCard(props) {
+export default function SimpleCard(props:any) {
   const classes = useStyles();
 
   return (
