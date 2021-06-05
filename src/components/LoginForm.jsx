@@ -32,6 +32,13 @@ const LoginForm = (props) => {
     .then(response => autentications(response)).catch(error => alert(error.message))
   }
 
+  const handleLoginSubmitDemo = (e) => {
+    e.preventDefault();
+    props.handleClose(e)
+    axios.post(`${BASE_URL}/sessions`, {email: 'demo@shopeasy.com', password: '12345'}, {withCredentials: true})
+    .then(response => autentications(response)).catch(error => alert(error.message))
+  }
+
   const autentications = (response) => {
     if(response.data.logged_in) {
       props.dispatch(signIn(response))
@@ -80,6 +87,9 @@ const LoginForm = (props) => {
     <Button autoFocus  color="primary" type="submit" disabled={login.email.length === 0 || login.password.length === 0}>
       Log In
     </Button>
+  </form>
+  <form className={classes.root} noValidate autoComplete="off" onSubmit={(e) => handleLoginSubmitDemo(e)}>
+    <button type="submit" className="btn btn-success">Skip Login (Demo Account)</button>
   </form>
   <h3>Or Sign Up</h3>
   <form className={classes.root} noValidate autoComplete="off" onSubmit={(e) => handleSignupSubmit(e)}>
