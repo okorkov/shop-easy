@@ -29,7 +29,6 @@ class SingleProduct extends Component {
   }
 
   render() {
-
     return (
       <>
       {
@@ -43,7 +42,7 @@ class SingleProduct extends Component {
           />
           <img className="img-fluid product-image" src={this.state.data.image} alt={this.state.data.name} ></img>
           <CardContent>
-            <Typography variant="body1" color="textSecondary" component="p" style={{width: '40%', textAlign: 'center', marginLeft: '30%'}}>
+            <Typography variant="body1" color="textSecondary" component="p" style={{width: '100%', textAlign: 'center', padding: '10%'}}>
               {this.state.data.description}
             </Typography>
             {(this.state.data.quantity < 5 && this.state.data.quantity > 0) ? 
@@ -56,10 +55,10 @@ class SingleProduct extends Component {
           <CategoryCard data={this.state.data} category={this.state.data.category}/>
           {(this.state.data.quantity <= 0) ? <><br /> <p className='quantity-zero' style={{color: 'red'}}>Sorry, Item is Out of Stock</p> </>:
           <CardActions disableSpacing>
-            <IconButton aria-label="add to cart" onClick={() => addToCart({
+            <IconButton aria-label="add to cart" onClick={() => this.props.dispatch(addToCart({
               ...this.props,
               data: this.state.data
-            })}>
+            }))}>
               <AddShoppingCartIcon fontSize="large"/>
               Add to Cart
             </IconButton>
