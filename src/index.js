@@ -10,23 +10,19 @@ import { Provider } from 'react-redux';
 import AlertMUITemplate from "react-alert-template-mui";
 
 
-// const store = createStore(rootReducer, compose(
-//   applyMiddleware(thunk),
-//   window.devToolsExtension ? window.devToolsExtension() : f => f
-// ));
+const store = createStore(rootReducer, compose(
+  applyMiddleware(thunk),
+  window.devToolsExtension ? window.devToolsExtension() : f => f
+));
 
-interface IIndexProps {
-  [key: string]: any;
-}
+// const store = createStore(
+//   rootReducer,
+//   compose(
+//       applyMiddleware(thunk),
+//       (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__() || compose
+//   )       
 
-const store = createStore(
-  rootReducer,
-  compose(
-      applyMiddleware(thunk),
-      (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__() || compose
-  )       
-
-);
+// );
 
 
 ReactDOM.render(
